@@ -1,8 +1,9 @@
 package com.projit.storeApp.controllers;
 
 import com.projit.storeApp.dtos.ProductDto;
-import com.projit.storeApp.entities.Category;
 import com.projit.storeApp.mapper.ProductMapper;
+import com.projit.storeApp.repositories.CategoryRepository;
+import com.projit.storeApp.repositories.ProductRepository;
 import com.projit.storeApp.secvices.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

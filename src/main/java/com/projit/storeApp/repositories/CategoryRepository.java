@@ -1,4 +1,4 @@
-package com.projit.storeApp.controllers;
+package com.projit.storeApp.repositories;
 
 import com.projit.storeApp.entities.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
