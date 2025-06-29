@@ -2,6 +2,8 @@ package com.projit.storeApp.controllers;
 
 import com.projit.storeApp.dtos.AddItemToCartRequest;
 import com.projit.storeApp.dtos.CartDto;
+import com.projit.storeApp.dtos.CartItemDto;
+import com.projit.storeApp.dtos.UpdateCartItemRequest;
 import com.projit.storeApp.entities.Cart;
 import com.projit.storeApp.entities.CartItem;
 import com.projit.storeApp.mapper.CartMapper;
@@ -85,5 +87,34 @@ public class CartController {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(cartMapper.toDto(cart));
+	}
+
+	@PutMapping("/{cartId}/items/{productId}")
+	public ResponseEntity<?> updateItem(
+			@PathVariable("cartId") UUID cartId,
+			@PathVariable("productId") Long productId,
+			@Valid @RequestBody UpdateCartItemRequest request){
+
+		var cart = cartRepository.getCartWithItems(cartId).orElse(null);
+		if (cart == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+					Map.of("error", "Cart is not found")
+			);
+		}
+
+		var cartItem = cart.getItems().stream()
+				.filter(item -> item.getProduct().getId().equals(productId))
+				.findFirst()
+				.orElse(null);
+
+		if (cartItem == null) {
+			ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+					Map.of("error", "Product was not found in the Cart")
+			);
+		}
+
+		cartItem.setQuantity(request.getQuantity());
+		cartRepository.save(cart);
+		return ResponseEntity.ok(cartMapper.toDto(cartItem));
 	}
 }
