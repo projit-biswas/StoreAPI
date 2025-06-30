@@ -2,10 +2,8 @@ package com.projit.storeApp.controllers;
 
 import com.projit.storeApp.dtos.AddItemToCartRequest;
 import com.projit.storeApp.dtos.CartDto;
-import com.projit.storeApp.dtos.CartItemDto;
 import com.projit.storeApp.dtos.UpdateCartItemRequest;
 import com.projit.storeApp.entities.Cart;
-import com.projit.storeApp.entities.CartItem;
 import com.projit.storeApp.mapper.CartMapper;
 import com.projit.storeApp.repositories.CartRepository;
 import com.projit.storeApp.repositories.ProductRepository;
