@@ -5,6 +5,7 @@ import com.projit.storeApp.mapper.ProductMapper;
 import com.projit.storeApp.repositories.CategoryRepository;
 import com.projit.storeApp.repositories.ProductRepository;
 import com.projit.storeApp.secvices.ProductService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/v1/products")
+@Tag(name = "Products")
 public class ProductController {
 	private final ProductService productService;
 	private final ProductMapper productMapper;

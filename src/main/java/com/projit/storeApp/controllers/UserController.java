@@ -6,20 +6,20 @@ import com.projit.storeApp.dtos.UserDto;
 import com.projit.storeApp.mapper.UserMapper;
 import com.projit.storeApp.repositories.UserRepository;
 import com.projit.storeApp.secvices.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/v1/users")
+@Tag(name = "Users")
 public class UserController {
 	private final UserService userService;
 	private final UserMapper userMapper;
