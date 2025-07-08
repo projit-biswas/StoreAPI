@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -18,12 +19,13 @@ import java.util.Map;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/users")
 @Tag(name = "Users")
 public class UserController {
 	private final UserService userService;
 	private final UserMapper userMapper;
 	private final UserRepository userRepository;
+	private final PasswordEncoder passwordEncoder;
 
 	@GetMapping
 	public List<UserDto> getAllUsers() {
@@ -47,6 +49,7 @@ public class UserController {
 			);
 		}
 		var user = userMapper.toEntity(request);
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userRepository.save(user);
 		var userDto = userMapper.toDto(user);
 		var uri = uriBuilder.path("/api/v1/users/{id}").buildAndExpand(user.getId()).toUri();
