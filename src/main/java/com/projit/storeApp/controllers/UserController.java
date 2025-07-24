@@ -3,6 +3,7 @@ package com.projit.storeApp.controllers;
 import com.projit.storeApp.dtos.RegisterUserRequest;
 import com.projit.storeApp.dtos.UpdateUserRequest;
 import com.projit.storeApp.dtos.UserDto;
+import com.projit.storeApp.entities.Role;
 import com.projit.storeApp.mapper.UserMapper;
 import com.projit.storeApp.repositories.UserRepository;
 import com.projit.storeApp.secvices.UserService;
@@ -50,7 +51,9 @@ public class UserController {
 		}
 		var user = userMapper.toEntity(request);
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setRole(Role.USER);
 		userRepository.save(user);
+
 		var userDto = userMapper.toDto(user);
 		var uri = uriBuilder.path("/api/v1/users/{id}").buildAndExpand(user.getId()).toUri();
 		return ResponseEntity.created(uri).body(userDto);

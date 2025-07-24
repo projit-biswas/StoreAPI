@@ -6,6 +6,7 @@ import com.projit.storeApp.dtos.LoginRequest;
 import com.projit.storeApp.dtos.UserDto;
 import com.projit.storeApp.mapper.UserMapper;
 import com.projit.storeApp.repositories.UserRepository;
+import com.projit.storeApp.secvices.Jwt;
 import com.projit.storeApp.secvices.JwtService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
@@ -31,6 +32,7 @@ public class AuthController {
 	private final JwtConfig jwtConfig;
 	private final UserRepository userRepository;
 	private final UserMapper userMapper;
+	private final Jwt jwt;
 
 	@PostMapping("/login")
 	public ResponseEntity<JwtResponse> login(@Valid @RequestBody LoginRequest request, HttpServletResponse response) {
@@ -45,26 +47,26 @@ public class AuthController {
 		var accessToken = jwtService.generateAccessToken(user);
 		var refreshToken = jwtService.generateRefreshToken(user);
 
-		var cookie = new Cookie("refreshToken", refreshToken);
+		var cookie = new Cookie("refreshToken", refreshToken.toString());
 		cookie.setHttpOnly(true);
 		cookie.setPath("/api/auth/refresh");
 		cookie.setMaxAge(jwtConfig.getRefreshTokenExpiration());
 		cookie.setSecure(true);
 		response.addCookie(cookie);
 
-		return ResponseEntity.ok(new JwtResponse(accessToken));
+		return ResponseEntity.ok(new JwtResponse(accessToken.toString()));
 	}
 
 	@PostMapping("/refresh")
 	public ResponseEntity<JwtResponse> refresh(@CookieValue("refreshToken") String refreshToken) {
-		if (!jwtService.validateToken(refreshToken)) {
+		var jwt = jwtService.parseToken(refreshToken);
+		if (jwt == null || jwt.isExpired()) {
 			ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		}
 
-		var userId = jwtService.getUserIdFromToken(refreshToken);
-		var user = userRepository.findById(userId).orElseThrow();
+		var user = userRepository.findById(jwt.getUserId()).orElseThrow();
 		var accessToken = jwtService.generateAccessToken(user);
-		return ResponseEntity.ok(new JwtResponse(accessToken));
+		return ResponseEntity.ok(new JwtResponse(accessToken.toString()));
 	}
 
 	@GetMapping("/current-user")

@@ -1,5 +1,6 @@
 package com.projit.storeApp.config;
 
+import com.projit.storeApp.entities.Role;
 import com.projit.storeApp.filters.JwtAuthenticationFilter;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -55,6 +56,7 @@ public class SecurityConfig {
 				.csrf(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(c -> c
 						.requestMatchers("/api/carts/**").permitAll()
+						.requestMatchers("/api/admin/**").hasRole(Role.ADMIN.name())
 						.requestMatchers(HttpMethod.POST, "/api/users").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/auth/refresh").permitAll()
@@ -68,8 +70,11 @@ public class SecurityConfig {
 						.anyRequest().authenticated()
 				)
 				.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-				.exceptionHandling(c ->
-						c.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)));
+				.exceptionHandling(c -> {
+					c.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
+					c.accessDeniedHandler((request, response, accessDeniedException) ->
+							response.setStatus(HttpStatus.FORBIDDEN.value()));
+				});
 
 		return http.build();
 	}
