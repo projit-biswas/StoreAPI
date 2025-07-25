@@ -1,5 +1,6 @@
 package com.projit.storeApp.controllers;
 
+import com.projit.storeApp.dtos.ErrorDto;
 import com.projit.storeApp.dtos.RegisterUserRequest;
 import com.projit.storeApp.dtos.UpdateUserRequest;
 import com.projit.storeApp.dtos.UserDto;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
-import java.util.Map;
 
 @AllArgsConstructor
 @RestController
@@ -46,7 +46,7 @@ public class UserController {
 	public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterUserRequest request, UriComponentsBuilder uriBuilder){
 		if (userRepository.existsByEmail(request.getEmail())){
 			return ResponseEntity.badRequest().body(
-					Map.of("email", "Email is already registered.")
+					new ErrorDto("Email is already registered")
 			);
 		}
 		var user = userMapper.toEntity(request);

@@ -2,6 +2,7 @@ package com.projit.storeApp.controllers;
 
 import com.projit.storeApp.dtos.CheckoutRequest;
 import com.projit.storeApp.dtos.CheckoutResponse;
+import com.projit.storeApp.dtos.ErrorDto;
 import com.projit.storeApp.entities.Order;
 import com.projit.storeApp.entities.OrderItem;
 import com.projit.storeApp.entities.OrderStatus;
@@ -16,8 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/checkout")
@@ -34,12 +33,12 @@ public class CheckoutController {
 		var cart = cartRepository.getCartWithItems(request.getCartId()).orElse(null);
 		if (cart == null) {
 			return ResponseEntity.badRequest().body(
-					Map.of("error", "Cart is not found.")
+					new ErrorDto("Cart is not found")
 			);
 		}
 		if (cart.getItems().isEmpty()) {
 			return ResponseEntity.badRequest().body(
-					Map.of("error", "Cart is empty")
+					new ErrorDto("Cart is empty")
 			);
 		}
 
