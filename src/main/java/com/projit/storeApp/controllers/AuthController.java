@@ -6,8 +6,7 @@ import com.projit.storeApp.dtos.LoginRequest;
 import com.projit.storeApp.dtos.UserDto;
 import com.projit.storeApp.mapper.UserMapper;
 import com.projit.storeApp.repositories.UserRepository;
-import com.projit.storeApp.secvices.Jwt;
-import com.projit.storeApp.secvices.JwtService;
+import com.projit.storeApp.services.JwtService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
@@ -32,7 +31,6 @@ public class AuthController {
 	private final JwtConfig jwtConfig;
 	private final UserRepository userRepository;
 	private final UserMapper userMapper;
-	private final Jwt jwt;
 
 	@PostMapping("/login")
 	public ResponseEntity<JwtResponse> login(@Valid @RequestBody LoginRequest request, HttpServletResponse response) {

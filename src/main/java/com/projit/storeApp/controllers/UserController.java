@@ -6,7 +6,7 @@ import com.projit.storeApp.dtos.UserDto;
 import com.projit.storeApp.entities.Role;
 import com.projit.storeApp.mapper.UserMapper;
 import com.projit.storeApp.repositories.UserRepository;
-import com.projit.storeApp.secvices.UserService;
+import com.projit.storeApp.services.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

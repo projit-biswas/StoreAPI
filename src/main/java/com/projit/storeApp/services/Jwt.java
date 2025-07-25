@@ -1,8 +1,9 @@
-package com.projit.storeApp.secvices;
+package com.projit.storeApp.services;
 
 
 import com.projit.storeApp.entities.Role;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
@@ -26,6 +27,10 @@ public class Jwt {
 
 	public Role getRole() {
 		return Role.valueOf(claims.get("role", String.class));
+	}
+
+	public String toString() {
+		return Jwts.builder().claims(claims).signWith(secret).compact();
 	}
 
 }

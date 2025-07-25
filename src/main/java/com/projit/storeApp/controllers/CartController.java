@@ -5,7 +5,7 @@ import com.projit.storeApp.dtos.CartDto;
 import com.projit.storeApp.dtos.UpdateCartItemRequest;
 import com.projit.storeApp.exception.CartNotFoundException;
 import com.projit.storeApp.exception.ProductNotFoundException;
-import com.projit.storeApp.secvices.CartService;
+import com.projit.storeApp.services.CartService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

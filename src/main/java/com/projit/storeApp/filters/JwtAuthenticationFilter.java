@@ -1,7 +1,6 @@
 package com.projit.storeApp.filters;
 
-import com.projit.storeApp.secvices.Jwt;
-import com.projit.storeApp.secvices.JwtService;
+import com.projit.storeApp.services.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +20,6 @@ import java.util.List;
 @AllArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	private final JwtService jwtService;
-	private final Jwt jwt;
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -39,9 +37,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		}
 
 		var authentication = new UsernamePasswordAuthenticationToken(
-				this.jwt.getUserId(),
+				jwt.getUserId(),
 				null,
-				List.of(new SimpleGrantedAuthority("ROLE_" + this.jwt.getRole()))
+				List.of(new SimpleGrantedAuthority("ROLE_" + jwt.getRole()))
 		);
 
 		authentication.setDetails(

@@ -1,13 +1,12 @@
-package com.projit.storeApp.secvices;
+package com.projit.storeApp.services;
 
-import com.projit.storeApp.mapper.UserMapper;
 import com.projit.storeApp.dtos.UserDto;
+import com.projit.storeApp.mapper.UserMapper;
 import com.projit.storeApp.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

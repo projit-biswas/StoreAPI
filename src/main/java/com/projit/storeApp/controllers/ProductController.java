@@ -4,7 +4,7 @@ import com.projit.storeApp.dtos.ProductDto;
 import com.projit.storeApp.mapper.ProductMapper;
 import com.projit.storeApp.repositories.CategoryRepository;
 import com.projit.storeApp.repositories.ProductRepository;
-import com.projit.storeApp.secvices.ProductService;
+import com.projit.storeApp.services.ProductService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

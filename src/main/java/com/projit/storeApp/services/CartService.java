@@ -1,4 +1,4 @@
-package com.projit.storeApp.secvices;
+package com.projit.storeApp.services;
 
 import com.projit.storeApp.dtos.CartDto;
 import com.projit.storeApp.dtos.CartItemDto;

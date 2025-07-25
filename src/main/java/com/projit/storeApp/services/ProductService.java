@@ -1,4 +1,4 @@
-package com.projit.storeApp.secvices;
+package com.projit.storeApp.services;
 
 import com.projit.storeApp.dtos.ProductDto;
 import com.projit.storeApp.mapper.ProductMapper;
