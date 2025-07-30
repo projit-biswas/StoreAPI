@@ -1,6 +1,6 @@
 package com.projit.storeApp.entities;
 
-public enum OrderStatus {
+public enum PaymentStatus {
 	PENDING,
 	PAID,
 	FAILED,
