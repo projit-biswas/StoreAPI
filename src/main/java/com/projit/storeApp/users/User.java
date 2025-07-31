@@ -1,5 +1,6 @@
-package com.projit.storeApp.entities;
+package com.projit.storeApp.users;
 
+import com.projit.storeApp.products.Product;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -40,19 +41,6 @@ public class User {
 	@Builder.Default
 	private List<Address> addresses = new ArrayList<>();
 
-	public void addAddress(Address address) {
-		addresses.add(address);
-		address.setUser(this);
-	}
-
-	public void removeAddress(Address address) {
-		addresses.remove(address);
-		address.setUser(null);
-	}
-
-//	@OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
-//	private Profile profile;
-
 	@ManyToMany
 	@JoinTable(
 			name = "wishlist",
@@ -63,6 +51,16 @@ public class User {
 
 	public void addFavoriteProduct(Product product) {
 		favoriteProducts.add(product);
+	}
+
+	public void addAddress(Address address) {
+		addresses.add(address);
+		address.setUser(this);
+	}
+
+	public void removeAddress(Address address) {
+		addresses.remove(address);
+		address.setUser(null);
 	}
 
 	@Override

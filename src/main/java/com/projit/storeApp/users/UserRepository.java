@@ -1,9 +1,5 @@
-package com.projit.storeApp.repositories;
+package com.projit.storeApp.users;
 
-import com.projit.storeApp.entities.User;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

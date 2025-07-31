@@ -1,6 +1,5 @@
-package com.projit.storeApp.validation;
+package com.projit.storeApp.users;
 
-import jakarta.persistence.Table;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 

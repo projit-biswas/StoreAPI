@@ -1,9 +1,5 @@
-package com.projit.storeApp.mapper;
+package com.projit.storeApp.users;
 
-import com.projit.storeApp.dtos.RegisterUserRequest;
-import com.projit.storeApp.dtos.UpdateUserRequest;
-import com.projit.storeApp.dtos.UserDto;
-import com.projit.storeApp.entities.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 

@@ -1,6 +1,5 @@
-package com.projit.storeApp.dtos;
+package com.projit.storeApp.users;
 
-import com.projit.storeApp.validation.Lowercase;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

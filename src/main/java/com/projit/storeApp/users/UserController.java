@@ -1,13 +1,5 @@
-package com.projit.storeApp.controllers;
+package com.projit.storeApp.users;
 
-import com.projit.storeApp.dtos.ErrorDto;
-import com.projit.storeApp.dtos.RegisterUserRequest;
-import com.projit.storeApp.dtos.UpdateUserRequest;
-import com.projit.storeApp.dtos.UserDto;
-import com.projit.storeApp.entities.Role;
-import com.projit.storeApp.mapper.UserMapper;
-import com.projit.storeApp.repositories.UserRepository;
-import com.projit.storeApp.services.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -23,6 +15,7 @@ import java.util.List;
 @RequestMapping("/api/users")
 @Tag(name = "Users")
 public class UserController {
+	private final UserDetailsServiceImpl userDetailsService;
 	private final UserService userService;
 	private final UserMapper userMapper;
 	private final UserRepository userRepository;
@@ -44,39 +37,19 @@ public class UserController {
 
 	@PostMapping
 	public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterUserRequest request, UriComponentsBuilder uriBuilder){
-		if (userRepository.existsByEmail(request.getEmail())){
-			return ResponseEntity.badRequest().body(
-					new ErrorDto("Email is already registered")
-			);
-		}
-		var user = userMapper.toEntity(request);
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		user.setRole(Role.USER);
-		userRepository.save(user);
-
-		var userDto = userMapper.toDto(user);
-		var uri = uriBuilder.path("/api/v1/users/{id}").buildAndExpand(user.getId()).toUri();
+		var userDto = userService.registerUser(request);
+		var uri = uriBuilder.path("/api/v1/users/{id}").buildAndExpand(userDto.getId()).toUri();
 		return ResponseEntity.created(uri).body(userDto);
 	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<UserDto> updateUser(@PathVariable(name = "id") Long id , @RequestBody UpdateUserRequest request ){
-		var user = userRepository.findById(id).orElse(null);
-		if (user == null) {
-			return ResponseEntity.notFound().build();
-		}
-		userMapper.update(request, user);
-		userRepository.save(user);
-		return ResponseEntity.ok(userMapper.toDto(user));
+		return ResponseEntity.ok(userService.updateUser(id, request));
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deleteUser(@PathVariable(name = "id") Long id){
-		var user = userRepository.findById(id).orElse(null);
-		if (user == null) {
-			return ResponseEntity.notFound().build();
-		}
-		userRepository.delete(user);
+	public ResponseEntity<Void> deleteUser(@PathVariable(name = "id") Long id) {
+		userService.deleteUser(id);
 		return ResponseEntity.noContent().build();
 	}
 }
