@@ -4,7 +4,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -15,11 +14,7 @@ import java.util.List;
 @RequestMapping("/api/users")
 @Tag(name = "Users")
 public class UserController {
-	private final UserDetailsServiceImpl userDetailsService;
 	private final UserService userService;
-	private final UserMapper userMapper;
-	private final UserRepository userRepository;
-	private final PasswordEncoder passwordEncoder;
 
 	@GetMapping
 	public List<UserDto> getAllUsers() {

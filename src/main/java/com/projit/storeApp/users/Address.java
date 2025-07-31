@@ -1,4 +1,4 @@
-package com.projit.storeApp.entities;
+package com.projit.storeApp.users;
 
 import jakarta.persistence.*;
 import lombok.*;
