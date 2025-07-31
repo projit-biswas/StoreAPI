@@ -1,4 +1,4 @@
-package com.projit.storeApp.entities;
+package com.projit.storeApp.products;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

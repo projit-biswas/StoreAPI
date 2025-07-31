@@ -1,6 +1,6 @@
 package com.projit.storeApp.products;
 
-import com.projit.storeApp.controllers.ErrorDto;
+import com.projit.storeApp.common.ErrorDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
