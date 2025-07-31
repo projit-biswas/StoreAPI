@@ -1,9 +1,6 @@
-package com.projit.storeApp.controllers;
+package com.projit.storeApp.orders;
 
-import com.projit.storeApp.dtos.ErrorDto;
-import com.projit.storeApp.dtos.OrderDto;
-import com.projit.storeApp.exception.OrderNotFoundException;
-import com.projit.storeApp.services.OrderService;
+import com.projit.storeApp.common.ErrorDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,5 +1,8 @@
-package com.projit.storeApp.entities;
+package com.projit.storeApp.orders;
 
+import com.projit.storeApp.carts.Cart;
+import com.projit.storeApp.payments.PaymentStatus;
+import com.projit.storeApp.users.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

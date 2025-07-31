@@ -1,4 +1,4 @@
-package com.projit.storeApp.exception;
+package com.projit.storeApp.orders;
 
 public class OrderNotFoundException extends RuntimeException {
 	public OrderNotFoundException() {

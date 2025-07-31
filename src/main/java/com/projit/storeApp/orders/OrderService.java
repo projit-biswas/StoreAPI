@@ -1,9 +1,6 @@
-package com.projit.storeApp.services;
+package com.projit.storeApp.orders;
 
-import com.projit.storeApp.dtos.OrderDto;
-import com.projit.storeApp.exception.OrderNotFoundException;
-import com.projit.storeApp.mapper.OrderMapper;
-import com.projit.storeApp.repositories.OrderRepository;
+import com.projit.storeApp.auth.AuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;

@@ -1,5 +1,6 @@
-package com.projit.storeApp.entities;
+package com.projit.storeApp.orders;
 
+import com.projit.storeApp.products.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

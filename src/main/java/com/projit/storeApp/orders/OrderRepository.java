@@ -1,7 +1,6 @@
-package com.projit.storeApp.repositories;
+package com.projit.storeApp.orders;
 
-import com.projit.storeApp.entities.Order;
-import com.projit.storeApp.entities.User;
+import com.projit.storeApp.users.User;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
