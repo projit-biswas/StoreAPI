@@ -1,9 +1,5 @@
-package com.projit.storeApp.mapper;
+package com.projit.storeApp.carts;
 
-import com.projit.storeApp.dtos.CartDto;
-import com.projit.storeApp.dtos.CartItemDto;
-import com.projit.storeApp.entities.Cart;
-import com.projit.storeApp.entities.CartItem;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

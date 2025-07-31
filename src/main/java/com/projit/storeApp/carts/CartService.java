@@ -1,13 +1,7 @@
-package com.projit.storeApp.services;
+package com.projit.storeApp.carts;
 
-import com.projit.storeApp.dtos.CartDto;
-import com.projit.storeApp.dtos.CartItemDto;
-import com.projit.storeApp.entities.Cart;
-import com.projit.storeApp.exception.CartNotFoundException;
-import com.projit.storeApp.exception.ProductNotFoundException;
-import com.projit.storeApp.mapper.CartMapper;
-import com.projit.storeApp.repositories.CartRepository;
-import com.projit.storeApp.repositories.ProductRepository;
+import com.projit.storeApp.products.ProductNotFoundException;
+import com.projit.storeApp.products.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

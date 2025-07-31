@@ -1,6 +1,5 @@
-package com.projit.storeApp.dtos;
+package com.projit.storeApp.carts;
 
-import com.projit.storeApp.entities.CartItem;
 import lombok.Data;
 
 import java.math.BigDecimal;

@@ -1,6 +1,5 @@
-package com.projit.storeApp.repositories;
+package com.projit.storeApp.carts;
 
-import com.projit.storeApp.entities.Cart;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
