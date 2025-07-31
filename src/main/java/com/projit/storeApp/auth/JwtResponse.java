@@ -1,4 +1,4 @@
-package com.projit.storeApp.dtos;
+package com.projit.storeApp.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

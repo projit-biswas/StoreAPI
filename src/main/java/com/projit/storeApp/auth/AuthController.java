@@ -1,12 +1,8 @@
-package com.projit.storeApp.controllers;
+package com.projit.storeApp.auth;
 
-import com.projit.storeApp.config.JwtConfig;
-import com.projit.storeApp.dtos.JwtResponse;
-import com.projit.storeApp.dtos.LoginRequest;
-import com.projit.storeApp.dtos.UserDto;
-import com.projit.storeApp.mapper.UserMapper;
-import com.projit.storeApp.repositories.UserRepository;
-import com.projit.storeApp.services.JwtService;
+import com.projit.storeApp.users.UserDto;
+import com.projit.storeApp.users.UserMapper;
+import com.projit.storeApp.users.UserRepository;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;

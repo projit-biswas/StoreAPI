@@ -1,7 +1,6 @@
-package com.projit.storeApp.config;
+package com.projit.storeApp.auth;
 
-import com.projit.storeApp.entities.Role;
-import com.projit.storeApp.filters.JwtAuthenticationFilter;
+import com.projit.storeApp.users.Role;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

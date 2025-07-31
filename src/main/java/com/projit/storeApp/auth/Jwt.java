@@ -1,7 +1,7 @@
-package com.projit.storeApp.services;
+package com.projit.storeApp.auth;
 
 
-import com.projit.storeApp.entities.Role;
+import com.projit.storeApp.users.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 

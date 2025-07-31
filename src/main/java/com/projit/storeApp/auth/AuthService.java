@@ -1,7 +1,7 @@
-package com.projit.storeApp.services;
+package com.projit.storeApp.auth;
 
-import com.projit.storeApp.entities.User;
-import com.projit.storeApp.repositories.UserRepository;
+import com.projit.storeApp.users.User;
+import com.projit.storeApp.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;

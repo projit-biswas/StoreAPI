@@ -1,6 +1,5 @@
-package com.projit.storeApp.filters;
+package com.projit.storeApp.auth;
 
-import com.projit.storeApp.services.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

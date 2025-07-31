@@ -1,7 +1,6 @@
-package com.projit.storeApp.services;
+package com.projit.storeApp.auth;
 
-import com.projit.storeApp.config.JwtConfig;
-import com.projit.storeApp.entities.User;
+import com.projit.storeApp.users.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;

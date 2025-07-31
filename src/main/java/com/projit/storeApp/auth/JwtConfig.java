@@ -1,4 +1,4 @@
-package com.projit.storeApp.config;
+package com.projit.storeApp.auth;
 
 import io.jsonwebtoken.security.Keys;
 import lombok.Data;
