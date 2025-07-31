@@ -1,13 +1,16 @@
 # 🏪 Store API
 
-A Spring Boot-based RESTful API for managing products, customers, carts, and orders — ideal for online store or e-commerce platforms.
+A Spring Boot-based RESTful API for managing products, customers, carts, orders and payments — ideal for online store or
+e-commerce platforms.
 
 ## 🔧 Technology Stack
 
-- **Java 17+**
+- **Java 21+**
 - **Spring Boot** (Web, Data JPA, Security)
-- **Hibernate** for ORM
+- **Spring Data JPA** for ORM
+- **Spring Security** for authentication and authorization
 - **MySQL** for relational database
+- **Flyway** for database migrations
 - **JWT** for secure token-based authentication
 - **Lombok** to reduce boilerplate code
 - **Swagger UI** for API documentation and testing
@@ -43,6 +46,14 @@ A Spring Boot-based RESTful API for managing products, customers, carts, and ord
 - View order history (Customer/Admin)
 - Track order status
 
+### 💳 Payment Processing
+
+- Integrate with payment gateways (mocked for demo)
+- Process payments for orders
+- Stripe integration for payment processing
+- View payment history
+- Handle payment status updates
+
 ### 🗺️ Address Management
 - Add/update/remove address linked to users
 - Associate address during order placement
@@ -58,7 +69,7 @@ A Spring Boot-based RESTful API for managing products, customers, carts, and ord
 
 ### ✅ Prerequisites
 
-- Java 17 or higher
+- Java 21 or higher
 - Maven 3.x
 - MySQL Server
 
