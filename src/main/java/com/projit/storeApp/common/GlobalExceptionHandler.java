@@ -1,6 +1,5 @@
-package com.projit.storeApp.controllers;
+package com.projit.storeApp.common;
 
-import com.projit.storeApp.dtos.ErrorDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
