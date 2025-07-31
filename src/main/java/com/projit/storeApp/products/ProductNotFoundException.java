@@ -1,4 +1,4 @@
-package com.projit.storeApp.exception;
+package com.projit.storeApp.products;
 
 public class ProductNotFoundException extends RuntimeException{
 }

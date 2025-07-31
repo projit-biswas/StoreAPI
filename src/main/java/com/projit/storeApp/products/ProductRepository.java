@@ -1,6 +1,5 @@
-package com.projit.storeApp.repositories;
+package com.projit.storeApp.products;
 
-import com.projit.storeApp.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

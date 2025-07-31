@@ -1,6 +1,5 @@
-package com.projit.storeApp.dtos;
+package com.projit.storeApp.products;
 
-import com.projit.storeApp.entities.Category;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

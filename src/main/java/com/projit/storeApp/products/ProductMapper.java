@@ -1,7 +1,5 @@
-package com.projit.storeApp.mapper;
+package com.projit.storeApp.products;
 
-import com.projit.storeApp.dtos.ProductDto;
-import com.projit.storeApp.entities.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
