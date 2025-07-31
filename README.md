@@ -61,7 +61,7 @@ e-commerce platforms.
 ### ⚙️ Additional Highlights
 - Centralized exception handling
 - Data Transfer Objects (DTOs) for clean separation
-- Layered architecture (Controller-Service-Repository)
+- Feature-based architecture
 
 ---
 
