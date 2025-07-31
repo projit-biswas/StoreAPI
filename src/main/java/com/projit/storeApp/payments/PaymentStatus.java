@@ -1,4 +1,4 @@
-package com.projit.storeApp.entities;
+package com.projit.storeApp.payments;
 
 public enum PaymentStatus {
 	PENDING,

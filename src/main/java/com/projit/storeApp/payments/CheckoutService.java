@@ -1,13 +1,12 @@
-package com.projit.storeApp.services;
+package com.projit.storeApp.payments;
 
-import com.projit.storeApp.dtos.CheckoutRequest;
-import com.projit.storeApp.dtos.CheckoutResponse;
-import com.projit.storeApp.entities.Order;
-import com.projit.storeApp.exception.CartEmptyException;
-import com.projit.storeApp.exception.CartNotFoundException;
-import com.projit.storeApp.exception.PaymentException;
-import com.projit.storeApp.repositories.CartRepository;
-import com.projit.storeApp.repositories.OrderRepository;
+import com.projit.storeApp.auth.AuthService;
+import com.projit.storeApp.carts.CartEmptyException;
+import com.projit.storeApp.carts.CartNotFoundException;
+import com.projit.storeApp.carts.CartRepository;
+import com.projit.storeApp.carts.CartService;
+import com.projit.storeApp.orders.Order;
+import com.projit.storeApp.orders.OrderRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

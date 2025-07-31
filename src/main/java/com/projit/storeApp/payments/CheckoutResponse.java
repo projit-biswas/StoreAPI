@@ -1,4 +1,4 @@
-package com.projit.storeApp.dtos;
+package com.projit.storeApp.payments;
 
 import lombok.Data;
 

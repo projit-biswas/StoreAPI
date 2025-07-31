@@ -1,14 +1,9 @@
-package com.projit.storeApp.controllers;
+package com.projit.storeApp.payments;
 
-import com.projit.storeApp.dtos.CheckoutRequest;
-import com.projit.storeApp.dtos.CheckoutResponse;
-import com.projit.storeApp.dtos.ErrorDto;
-import com.projit.storeApp.exception.CartEmptyException;
-import com.projit.storeApp.exception.CartNotFoundException;
-import com.projit.storeApp.exception.PaymentException;
-import com.projit.storeApp.repositories.OrderRepository;
-import com.projit.storeApp.services.CheckoutService;
-import com.projit.storeApp.services.WebhookRequest;
+import com.projit.storeApp.carts.CartEmptyException;
+import com.projit.storeApp.carts.CartNotFoundException;
+import com.projit.storeApp.common.ErrorDto;
+import com.projit.storeApp.orders.OrderRepository;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.projit.storeApp.services;
+package com.projit.storeApp.payments;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

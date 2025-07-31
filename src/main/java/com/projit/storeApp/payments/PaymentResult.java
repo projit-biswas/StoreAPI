@@ -1,6 +1,5 @@
-package com.projit.storeApp.services;
+package com.projit.storeApp.payments;
 
-import com.projit.storeApp.entities.PaymentStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

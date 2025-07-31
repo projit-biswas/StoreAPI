@@ -1,6 +1,6 @@
-package com.projit.storeApp.services;
+package com.projit.storeApp.payments;
 
-import com.projit.storeApp.entities.Order;
+import com.projit.storeApp.orders.Order;
 
 import java.util.Optional;
 
