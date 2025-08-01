@@ -1,10 +1,9 @@
 package com.projit.storeApp.auth;
 
-import com.projit.storeApp.users.Role;
+import com.projit.storeApp.common.SecurityRules;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -21,6 +20,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import java.util.List;
+
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor
@@ -28,14 +29,15 @@ public class SecurityConfig {
 
 	private final UserDetailsService userDetailsService;
 	private final JwtAuthenticationFilter jwtAuthenticationFilter;
+	private final List<SecurityRules> featureSecurityRules;
 
 	@Bean
-	public PasswordEncoder passwordEncoder(){
+	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
 	@Bean
-	public AuthenticationProvider authenticationProvider(){
+	public AuthenticationProvider authenticationProvider() {
 		var provider = new DaoAuthenticationProvider();
 		provider.setPasswordEncoder(passwordEncoder());
 		provider.setUserDetailsService(userDetailsService);
@@ -51,23 +53,12 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 				.sessionManagement(c ->
-						c.sessionCreationPolicy(SessionCreationPolicy.STATELESS) )
+						c.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.csrf(AbstractHttpConfigurer::disable)
-				.authorizeHttpRequests(c -> c
-						.requestMatchers("/api/carts/**").permitAll()
-						.requestMatchers("/api/admin/**").hasRole(Role.ADMIN.name())
-						.requestMatchers(HttpMethod.POST, "/api/users").permitAll()
-						.requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
-						.requestMatchers(HttpMethod.POST, "/api/auth/refresh").permitAll()
-						.requestMatchers(HttpMethod.POST, "/api/checkout/webhook").permitAll()
-						.requestMatchers(
-								"/swagger-ui/**",
-								"/v3/api-docs/**",
-								"/swagger-resources/**",
-								"/swagger-ui.html",
-								"/webjars/**"
-						).permitAll()
-						.anyRequest().authenticated()
+				.authorizeHttpRequests(c -> {
+							featureSecurityRules.forEach(rules -> rules.configure(c));
+							c.anyRequest().authenticated();
+						}
 				)
 				.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
 				.exceptionHandling(c -> {
