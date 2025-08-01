@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 @Service
 public class AdminService {
-
 	private final UserRepository userRepository;
 	private final UserMapper userMapper;
 	private final PasswordEncoder passwordEncoder;
