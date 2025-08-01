@@ -5,7 +5,7 @@ e-commerce platforms.
 
 ## 🔧 Technology Stack
 
-- **Java 21+**
+- **Java 17+**
 - **Spring Boot** (Web, Data JPA, Security)
 - **Spring Data JPA** for ORM
 - **Spring Security** for authentication and authorization

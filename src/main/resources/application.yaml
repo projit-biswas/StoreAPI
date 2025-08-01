@@ -1,20 +1,12 @@
 spring:
   application:
     name: storeApp
-  datasource:
-    url: jdbc:mysql://localhost:3306/store_db
-    username: root
-    password: projit
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
 
   flyway:
     enabled: true
     locations: classpath:db/migration
-
+  profiles:
+    active: dev
   jwt:
     secret: ${JWT_SECRET}
     accessTokenExpiration: 600 # 10 minutes
@@ -23,4 +15,3 @@ spring:
 stripe:
   secretKey: ${STRIPE_SECRET_KEY}
   webhookSecretKey: ${STRIPE_WEBHOOK_SECRET_KEY}
-websiteUrl: http://localhost:8080
