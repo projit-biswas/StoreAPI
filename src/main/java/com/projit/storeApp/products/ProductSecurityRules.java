@@ -12,7 +12,7 @@ public class ProductSecurityRules implements SecurityRules {
 	@Override
 	public void configure(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry registry) {
 		registry.requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
-				.requestMatchers(HttpMethod.POST, "/api/products/**").hasRole(Role.ADMIN.name())
+				.requestMatchers(HttpMethod.POST, "/api/products/**").permitAll()
 				.requestMatchers(HttpMethod.PUT, "/api/products/**").hasRole(Role.ADMIN.name())
 				.requestMatchers(HttpMethod.DELETE, "/api/products/**").hasRole(Role.ADMIN.name());
 	}
