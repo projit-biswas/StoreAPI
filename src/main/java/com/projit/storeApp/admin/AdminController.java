@@ -16,6 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class AdminController {
 
 	private final UserService userService;
+	private final AdminService adminService;
 
 	@GetMapping("/hello")
 	public String sayHello() {
@@ -24,7 +25,7 @@ public class AdminController {
 
 	@PostMapping
 	public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterUserRequest request, UriComponentsBuilder uriBuilder) {
-		var userDto = userService.registerUser(request);
+		var userDto = adminService.registerUser(request);
 		var uri = uriBuilder.path("/api/users/{id}").buildAndExpand(userDto.getId()).toUri();
 		return ResponseEntity.created(uri).body(userDto);
 	}
