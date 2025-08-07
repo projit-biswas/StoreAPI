@@ -1,5 +1,6 @@
 package com.projit.storeApp.products;
 
+import com.projit.storeApp.common.ErrorDto;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -42,5 +43,15 @@ public class ProductController {
 	public ResponseEntity<String> deleteProduct(@PathVariable Long id){
 		productService.deleteProduct(id);
 		return ResponseEntity.noContent().build();
+	}
+
+	@ExceptionHandler(CategoryNotFoundException.class)
+	public ResponseEntity<ErrorDto> handleCategoryNotFound() {
+		return ResponseEntity.badRequest().body(new ErrorDto("Category not found"));
+	}
+
+	@ExceptionHandler(ProductNotFoundException.class)
+	public ResponseEntity<ErrorDto> handleProductNotFound() {
+		return ResponseEntity.notFound().build();
 	}
 }

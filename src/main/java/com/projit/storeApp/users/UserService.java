@@ -32,7 +32,7 @@ public class UserService {
 
 	public UserDto registerUser(RegisterUserRequest request) {
 		if (userRepository.existsByEmail(request.getEmail())) {
-			throw new EmailAlreadyExistsException("Email is already exists");
+			throw new EmailAlreadyExistsException("Email already exists");
 		}
 		var user = userMapper.toEntity(request);
 		user.setPassword(passwordEncoder.encode(user.getPassword()));

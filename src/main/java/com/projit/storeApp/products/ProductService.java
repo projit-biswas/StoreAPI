@@ -1,10 +1,7 @@
 package com.projit.storeApp.products;
 
-import com.projit.storeApp.common.ErrorDto;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.List;
 
@@ -43,7 +40,7 @@ public class ProductService {
 		}
 		var product = productRepository.findById(id).orElse(null);
 		if (product == null) {
-			throw new ProductNotFoundException();
+			throw new ProductNotFoundException("Product not found");
 		}
 		productMapper.update(productDto, product);
 		product.setCategory(category);
@@ -53,10 +50,7 @@ public class ProductService {
 	}
 
 	public ProductDto getProductById(Long id) {
-		var product = productRepository.findById(id).orElse(null);
-		if (product == null) {
-			throw new ProductNotFoundException();
-		}
+		var product = productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException("Product not found"));
 		return new ProductDto(
 				product.getId(), product.getName(), product.getDescription(), product.getPrice(), product.getCategory().getId());
 	}
@@ -64,18 +58,10 @@ public class ProductService {
 	public void deleteProduct(Long id) {
 		var product = productRepository.findById(id).orElse(null);
 		if (product == null) {
-			throw new ProductNotFoundException();
+			throw new ProductNotFoundException("Product not found");
 		}
 		productRepository.delete(product);
 	}
 
-	@ExceptionHandler(CategoryNotFoundException.class)
-	public ResponseEntity<ErrorDto> handleCategoryNotFound() {
-		return ResponseEntity.badRequest().body(new ErrorDto("Category not found"));
-	}
 
-	@ExceptionHandler(ProductNotFoundException.class)
-	public ResponseEntity<ErrorDto> handleProductNotFound() {
-		return ResponseEntity.notFound().build();
-	}
 }

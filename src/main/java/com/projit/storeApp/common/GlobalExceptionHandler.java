@@ -1,5 +1,6 @@
 package com.projit.storeApp.common;
 
+import com.projit.storeApp.users.EmailAlreadyExistsException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -17,6 +18,11 @@ public class GlobalExceptionHandler {
 		return ResponseEntity.badRequest().body(
 				new ErrorDto("Invalid request body")
 		);
+	}
+
+	@ExceptionHandler(EmailAlreadyExistsException.class)
+	public ResponseEntity<ErrorDto> handleEmailAlreadyExists() {
+		return ResponseEntity.badRequest().body(new ErrorDto("Email is already exists."));
 	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
