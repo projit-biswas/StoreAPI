@@ -1,7 +1,10 @@
 # 🏪 Store API
 
-A Spring Boot-based RESTful API for managing products, customers, carts, orders and payments — ideal for online store or
+A Spring Boot-based RESTful API for managing products, customers, carts, orders and payments — ideal for an online store or
 e-commerce platforms.
+
+# 🏪 API Documentation
+[**Click Here**](https://storeapi-production-b225.up.railway.app/swagger-ui/index.html#/)
 
 ## 🔧 Technology Stack
 
@@ -31,7 +34,7 @@ e-commerce platforms.
 - Update/delete user profiles
 
 ### 📦 Product Management
-- Admin: Create, update, delete products
+- Admin: Create, update and delete products
 - Customer: View and filter products
 
 ### 🛒 Cart Operations
@@ -41,7 +44,7 @@ e-commerce platforms.
 - Clear cart
 
 ### 📦 Order Management
-- Place orders from cart
+- Place orders from the cart
 - Cancel orders
 - View order history (Customer/Admin)
 - Track order status
@@ -69,7 +72,7 @@ e-commerce platforms.
 
 ### ✅ Prerequisites
 
-- Java 21 or higher
+- Java 17 or higher
 - Maven 3.x
 - MySQL Server
 
