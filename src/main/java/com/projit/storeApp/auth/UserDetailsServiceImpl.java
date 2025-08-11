@@ -1,5 +1,7 @@
-package com.projit.storeApp.users;
+package com.projit.storeApp.auth;
 
+import com.projit.storeApp.users.UserMapper;
+import com.projit.storeApp.users.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

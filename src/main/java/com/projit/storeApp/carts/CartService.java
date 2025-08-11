@@ -32,7 +32,7 @@ public class CartService {
 
 		var product = productRepository.findById(productId).orElse(null);
 		if (product == null) {
-			throw new ProductNotFoundException();
+			throw new ProductNotFoundException("Product not found");
 		}
 
 		var cartItem = cart.addItem(product);
@@ -58,7 +58,7 @@ public class CartService {
 		var cartItem = cart.getItem(productId);
 
 		if (cartItem == null) {
-			throw  new ProductNotFoundException();
+			throw new ProductNotFoundException("Product not found");
 		}
 
 		cartItem.setQuantity(quantity);
